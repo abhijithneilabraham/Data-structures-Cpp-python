@@ -30,6 +30,8 @@ class CreditCard:
             return True
     def payment(self,amount):
         self.balance-=amount
+    def mybalance(self):
+        return self.balance
     '''
     self :
 
@@ -42,3 +44,16 @@ __init__ :
  It is known as a constructor in object oriented concepts. This method called when
  an object is created from the class and it allow the class to initialize the attributes of a class.
  '''
+'''
+ Now I am gonna test the class
+ the tests are enclosed within a conditional if __name__=='__main__' 
+which makes it to be execuuted as the main program
+ '''
+if __name__=='__main__':    
+    wallet=CreditCard('Abhijith','SBI',12002100,10000)#constructor to create a new creditcard instance
+    val=100
+    wallet.charge(val)
+    print(wallet.mybalance())
+    wallet.payment(300)
+    print(wallet.mybalance())
+    
