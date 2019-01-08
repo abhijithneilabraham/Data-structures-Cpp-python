@@ -22,6 +22,14 @@ class CreditCard:
         self.account
     def get_limit(self):
         return self.limit
+    def charge(self,price):#price is recieved to the card
+        if price+self.balance>self.limit:
+            return False
+        else:
+            self.balance+=price
+            return True
+    def payment(self,amount):
+        self.balance-=amount
     '''
     self :
 
