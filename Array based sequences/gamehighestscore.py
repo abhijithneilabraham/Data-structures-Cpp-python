@@ -21,4 +21,16 @@ class GameEntry:
     to display respectively in the position of the {0} and {1}
     
     '''
-    
+class ScoreBoard:
+    def __init__(self,capacity=10):#scoreboard stores 10 elements
+        self.board=[None]*capacity
+        self.n=0
+    def getitem(self,k):
+        return self.board[k]
+    def __str__(self):
+        return '\n'.join(str(self.board[j]) for j in range(self.n)) #self creates n and iterates through n 
+    def add(self,entry):
+        score=entry.get_score()
+    good=self.n<len(self.board) or score>self.board[-1].get_score()
+        
+        
