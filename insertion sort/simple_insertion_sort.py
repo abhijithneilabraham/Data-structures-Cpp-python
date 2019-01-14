@@ -7,8 +7,8 @@ Created on Tue Jan 15 01:53:26 2019
 """
 A=[]
 def sort(A):
-    for i in A:
+    for i in range(len(A)):
         if A[i]<A[i-1]:
             A[i],A[i-1]=A[i-1],A[i]
     return A
-print(sort([1,2,3]))
+print(sort([5,2,3]))
