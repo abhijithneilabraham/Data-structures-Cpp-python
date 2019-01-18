@@ -29,7 +29,7 @@ class CaesarCipher:
             if msg[k].isupper():
                 j=ord(msg[k])-ord('A')
                 msg[k]=code[j]
-                return ''.join(msg)
+        return ''.join(msg)
             
     def encrypt(self,message):
         return self.transform(message,self.forward)
