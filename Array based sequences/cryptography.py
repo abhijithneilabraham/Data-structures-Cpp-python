@@ -22,4 +22,8 @@ class CaesarCipher:
             '''
             we can only  manipulate the characters,since string is immutable
             '''
-            
+    def transform(self,original,code):
+        msg=list(original)
+        for k in range(len(msg)):
+            if msg[k].isupper():
+                j
