@@ -17,7 +17,7 @@ class ArrayStack:
     def top(self):
         #returns the element at the top of stack but does not remove it.-top operation
         if self.isempty():
-            return ValueError('stack is empty')
+            raise ValueError('stack is empty')
         return self.data[-1]
     def pop(self):
         
