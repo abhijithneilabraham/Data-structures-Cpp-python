@@ -16,8 +16,11 @@ def bubblesort(a):
         flag=0
         x+=1
         for i in range(1,len(a)-x):
-            if a[i]<a[i-1]:
+            
+            
+            if a[i]<a[i-1] :
                 a[i],a[i-1]=a[i-1],a[i]
                 flag=1
+            
     return a
 print(bubblesort(a))
