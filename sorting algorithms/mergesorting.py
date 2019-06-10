@@ -10,25 +10,36 @@ Created on Sun Jun  2 16:26:33 2019
 merge sort using python
 """
 def mergesort(arr):
-    if len(arr)<=1:
+    # The last array split
+    if len(arr) <= 1:
         return arr
-    mid=len(arr)//2
-    left,right=mergesort(arr[:mid]),mergesort(arr[mid:])
-    return(left, right, arr.copy)
-def merge(left, right, merge):
-    l1,r1=0,0
-    while l1<len(left) and r1<len(right):
-        if left[l1]<right[r1]:
-            merged[l1+r1]=left[l1]
-            l1+=1
+    mid = len(arr) // 2
+    # Perform merge_sort recursively on both halves
+    left, right = mergesort(arr[:mid]), mergesort(arr[mid:])
+
+    # Merge each side together
+    return merge(left, right, arr.copy())
+
+
+def merge(left, right, merged):
+
+    left_cursor, right_cursor = 0, 0
+    while left_cursor < len(left) and right_cursor < len(right):
+      
+        # Sort each one and place into the result
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor+right_cursor]=left[left_cursor]
+            left_cursor += 1
         else:
-            merged[l1+r1]=right[r1]
-            r1+=1
-    for l1 in range(l1,len(left)):
-        merged[l1+r1]=left[l1]
-    for r1 in range(r1,len(right)):
-        merged[l1+r1]=right[r1]
-    return arr
-arr=[3,1,2,5,1]
-print(mergesort(arr))
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+            
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+        
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+
+arra=[3,1,2,5,1]
+print(mergesort(arra))
     
