@@ -9,8 +9,10 @@ def ternarysearch(data,target):
     left=0
     right=len(arr)-1
     while left<=right:
-        
         temp=left+(right-left)//3
+        
+        
+arr=[2,3,4,5,1,2,3]
         
         
     
