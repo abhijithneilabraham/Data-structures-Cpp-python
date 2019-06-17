@@ -25,6 +25,7 @@ class linkedlist:
                     self.headval=head.nextval
                     head=None
                     return
+                
         while head is not None:
             if head.dataval==node:
                 break
@@ -32,6 +33,9 @@ class linkedlist:
             head=head.nextval
         if head==None:
             return
+        prev.nextval=head.nextval
+        head=None
+        
 list1=linkedlist()
 list1.headval=Node("January")
 list1.headval.nextval=Node("February")
