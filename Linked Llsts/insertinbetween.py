@@ -18,7 +18,17 @@ class linkedlist:
         while printval is not None:
             print(printval.dataval)
             printval=printval.nextval
-    def insert(self,middleval,data):
+    def insert(self,middlenode,data):
+        if middlenode is None:
+            print("The mentioned node is absent")
+            return       
         newdata=Node(data)
-        
+        newdata.nextval=middlenode.nextval
+        middlenode.nextval=newdata
+list1=linkedlist()
+list1.headval=Node("January")
+month3=Node("March")
+list1.nextval=month3
+list1.insert(list1.headval.nextval,Node("february"))
+list1.listprint()
         
