@@ -28,7 +28,7 @@ class linkedlist:
 list1=linkedlist()
 list1.headval=Node("January")
 month3=Node("March")
-list1.nextval=month3
-list1.insert(list1.headval.nextval,Node("february"))
+list1.headval.nextval=month3
+list1.insert(list1.headval,"February")
 list1.listprint()
         
