@@ -19,9 +19,9 @@ class linkedlist:
             print(printval.dataval)
             printval=printval.nextval
     def insert(self,data):
-        newdata=Node(data)
-        newdata.nextval=self.headval
-        self.headval=newdata
+        newdata=Node(data)#creating new data using node class
+        newdata.nextval=self.headval#pointing the next value to the current value
+        self.headval=newdata# #getting new headvalue
 list1=linkedlist()
 list1.headval=Node("February")
 month3=Node("March")
