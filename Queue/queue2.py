@@ -14,10 +14,14 @@ class Queue:
             self.data.insert(0,dataval)
             return True
         return False
+    def deleteq(self):
+        del(self.data[-1])
     def peek(self):
         return self.data
 q=Queue()
 q.insertq("Monday")
 q.insertq("Tuesday")
 q.insertq("wednesday")
+print(q.peek())
+q.deleteq()
 print(q.peek()) 
