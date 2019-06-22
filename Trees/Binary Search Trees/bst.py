@@ -8,7 +8,7 @@ Created on Sat Jun 22 21:56:26 2019
 #First we create a root node
 class Node:
     def __init__(self,data):
-        self.leftt=None
+        self.left=None
         self.right=None
         self.data=data
     def printtree(self):
@@ -26,4 +26,15 @@ class Node:
                     self.right=Node(data)
                 else:
                     self.right.insert(data)
+    def printtree(self):
+        if self.left:
+            self.left.printtree()
+        print(self.data)
+        if self.right:
+            self.right.printtree()
+root=Node(12)
+root.insert(20)
+root.insert(10)
+root.insert(5)
+root.printtree()
                     
