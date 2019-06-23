@@ -31,19 +31,27 @@ class Node:
         if self.right:
             self.right.printtree()
     def findval(self,val):
-        if val==self.data or val==self.left or val==self.right:
-            print(str(self.data)+'is found')
+        if val<self.data:
+            if self.left is None:
+                print(str(val)+'is not found')
+                return str(val)
+            return self.left.findval(val)
+        elif val>self.data:
+            if self.right is None:
+                print(str(val)+'Not found')
+                return str(val)
+            return self.right.findval(val)
         else:
-            while self.left is not None and self.right is not None :
-                self.left.findval(val)
-                self.right.findval(val)
+            print(str(val)+'is found')
+                        
+        
                 
         
 root=Node(20)
 root.insert(30)
 root.insert(10)
 root.insert(5)
-root.findval(5)
+root.findval(10)
         
         
                 
