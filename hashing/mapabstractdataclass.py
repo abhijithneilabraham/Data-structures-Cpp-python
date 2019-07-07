@@ -24,6 +24,8 @@ class Map:
     def contains(self,key):
         ndx=self.findposition(key)
         return ndx is not None
+    def __iter__(self):
+        return iter(self.entrylist)
     def valueof(self,key):
         ndx=self.findposition(key)
         assert ndx is not None,"Invalid map key"
@@ -40,7 +42,7 @@ class Map:
                 return i
         return None 
 class _MapEntry:
-    def __init(self,key,value):
+    def __init__(self,key,value):
         self.key=key
         self.value=value
 mapping=Map()
@@ -50,7 +52,7 @@ mapping.add(3,9)
 for entry in iter(mapping):
     print(entry.key)
 print(len(mapping))
-print(mapping.valueOf(1))
+print(mapping.valueof(2))
 
             
                 
