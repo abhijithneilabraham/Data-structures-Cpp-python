@@ -1,0 +1,4 @@
+/Users/abhijithneilabraham/Documents/GitHub/Data-structures-Cpp-python/Recursion/towerofhanoi.cpp:16:45: error: invalid operands to binary expression ('const char *' and 'int')
+    cout<<"\nMove disk one from peg"<<a<"to"<<c;
+                                        ~~~~^ ~
+1 error generated.
