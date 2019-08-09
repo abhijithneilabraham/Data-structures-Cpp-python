@@ -22,6 +22,8 @@ void printarray(int arr[],int n){
 }
 int main(){
   int arr[]={ 12, 11, 13, 5, 6 };
-  insertionsort(arr,5);
-  printarray(arr,5);
+int n=sizeof(arr)/sizeof(arr[0]);
+  cout<<"size of array= \t"<<n;
+  insertionsort(arr,n);
+  printarray(arr,n);
 }
