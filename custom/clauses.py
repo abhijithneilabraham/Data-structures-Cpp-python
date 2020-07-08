@@ -7,20 +7,22 @@ Created on Wed Jul  8 18:47:53 2020
 """
 
 class Clause:
-    def __init__(self,q,min_kwd=None,max_kwd=None,avg_kwd=None):
-        self.which_are_clauses=["find","search for","what","get me","which","show"]
-        self.how_many_clauses=["how many","number of","who all","how much","sum of","total"]
-        self.count_clauses=["instances","count"]
-        self.max_clauses=["max","maximum","highest","biggest","most"]
-        self.min_clauses=["min","minimum","lowest","smallest","least"]
-        self.avg_clauses=["average","mean of"]
-        self.inttype=False
+    def __init__(self,q,inttype=False):
+        self.clauses={("find","search for","what","get me","which","show"):"select {} in {}",
+                      ("how many","number of","who all","how much","sum of","total"):"count {} in {}",
+                      ("instances","count"):"count {} in {}",
+                      ("max","maximum","highest","biggest","most"):"maximum of {} in {}",
+                      ("min","minimum","lowest","smallest","least"):"minimum of {} in {}",
+                      ("average","mean of"):"average of {} in {}"}
+        self.q=q
     def adapt(self):
-        print(self.q)
-        if self.min_kwd:
-            return "min"
-        elif self.min_kwd:
-            return"max"
+        q=self.q
+        clauses=self.clauses
+        for clause in clauses:
+            if any(i in q for i in clause):
+                return clauses[clause]
             
-a=Clause(5).adapt() 
+            
+a=Clause("how many").adapt() 
+print(a)
         
