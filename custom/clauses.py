@@ -8,30 +8,35 @@ Created on Wed Jul  8 18:47:53 2020
 
 class Clause:
     def __init__(self):
-        self.clauses={("find","search for","what","get me","which","show"):"select {} in {}",
+        self.clauses={
+                      ("find","search for","what","get me","which","show"):"select {} in {}",
                       ("how many","number of","who all","how much","sum of","total"):"count {} in {}",
                       ("instances","count"):"count {} in {}",
+                      ("max","maximum","highest","biggest","most"):"maximum of {} in {}",
+                      ("min","minimum","lowest","smallest","least"):"minimum of {} in {}",
+                      ("average","mean of"):"average of {} in {}"
                       }
-        self.int_clauses={ ("how many","number of","who all","how much","sum of","total"):"sum of {} in {}",
-                           ("max","maximum","highest","biggest","most"):"maximum of {} in {}",
-                           ("min","minimum","lowest","smallest","least"):"minimum of {} in {}",
-                           ("average","mean of"):"average of {} in {}"
-                           }
-
-    def adapt(self,q,inttype=False):
+        self.int_clauses={v[0]:v[1] for i,v in enumerate(self.clauses.items()) if i>2}
+    def adapt(self,q,priority=False):
         clauses=self.clauses
         int_clauses=self.int_clauses
-        if inttype:
-            for clause in int_clauses:
-               if any(i in q for i in clause):
-                   return int_clauses[clause]
-            
-        else:
-            for clause in clauses:
-                if any(i in q for i in clause):
+
+        for i,tup in enumerate(clauses.items()):
+            clause=tup[0]
+            if any(i in q for i in clause):
+                if priority  and "how many" in clause:
+                    return "sum of {} in {}"
+                elif "which" in clause :
+                    for clause2 in int_clauses:
+                        if any(i in q for i in clause2):
+                            return int_clauses[clause2]
                     return clauses[clause]
+                else:
+                    return clauses[clause]
+            
+
     
             
-a=Clause().adapt("how many instances of run is there",True) 
+a=Clause().adapt("what is the type of cancer with maximum deaths ",True) 
 print(a)
         
