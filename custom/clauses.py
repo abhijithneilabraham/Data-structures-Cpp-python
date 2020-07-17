@@ -12,14 +12,16 @@ class Clause:
                       ("find","search for","what","get me","which","show"):"select {} in {}",
                       ("how many","number of","who all","how much","sum of","total"):"count {} in {}",
                       ("instances","count"):"count {} in {}",
-                      ("max","maximum","highest","biggest","most"):"maximum of {} in {}",
-                      ("min","minimum","lowest","smallest","least"):"minimum of {} in {}",
-                      ("average","mean of"):"average of {} in {}"
+              
                       }
-        self.int_clauses={v[0]:v[1] for i,v in enumerate(self.clauses.items()) if i>2}
+        self.int_clauses={("max","maximum","highest","biggest","most"):"maximum of {} in {}",
+                      ("min","minimum","lowest","smallest","least"):"minimum of {} in {}",
+                      ("average","mean of"):"average of {} in {}"}
     def adapt(self,q,inttype=False,priority=False):
         clauses=self.clauses
         int_clauses=self.int_clauses
+        clauses.update(int_clauses)
+        
 
         for i,tup in enumerate(clauses.items()):
             clause=tup[0]
@@ -33,10 +35,8 @@ class Clause:
                     return clauses[clause]
                 else:
                     return clauses[clause]
-            
-
     
             
-a=Clause().adapt("what is the type of cancer with maximum deaths ",True) 
+a=Clause().adapt("what is the type of cancer with maximum deaths ") 
 print(a)
         
